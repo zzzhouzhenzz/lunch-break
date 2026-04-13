@@ -16,9 +16,9 @@ The user is stepping away from this session and wants to be able to pick it back
 
 2. **Generate a short descriptive title** (3–7 words, kebab-case slug friendly). Examples: `lunch-break-plugin-build`, `fix-cookie-jar-svg-background`, `slack-channel-remote-control-design`.
 
-3. **Pick a filename:** `~/.claude/lunch-break/YYYY-MM-DD-HHMM-<slug>.md` (use the current local date/time).
+3. **Pick a filename:** `~/.lunch-break/YYYY-MM-DD-HHMM-<slug>.md` (use the current local date/time).
 
-4. **Dedup before writing.** Check `~/.claude/lunch-break/` for any existing files whose filename ends in `-<slug>.md`. If any exist, they're stale saves of the same work — delete them before writing the new file. (Only the newest save of a given slug is useful.) If you need to pick a slightly different slug to distinguish genuinely different work, do that instead — but default to dedup.
+4. **Dedup before writing.** Check `~/.lunch-break/` for any existing files whose filename ends in `-<slug>.md`. If any exist, they're stale saves of the same work — delete them before writing the new file. (Only the newest save of a given slug is useful.) If you need to pick a slightly different slug to distinguish genuinely different work, do that instead — but default to dedup.
 
 5. **Write the file** with this exact frontmatter shape, then a readable body. Keep each section tight — this is a reminder, not a report.
 
@@ -55,7 +55,7 @@ branch: <git branch if in a repo, else omit>
 <anything else that would be painful to re-derive: decisions made, dead ends ruled out, surprising gotchas>
 ```
 
-6. **Create the directory if needed** (`mkdir -p ~/.claude/lunch-break`), write the file, then confirm to the user with:
+6. **Create the directory if needed** (`mkdir -p ~/.lunch-break`), write the file, then confirm to the user with:
    - The saved title
    - The full path
    - One sentence of what to type when they return: `/lunch-back`

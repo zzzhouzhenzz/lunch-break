@@ -3,11 +3,11 @@ description: Resume a saved lunch-break session — list saved sessions or load 
 argument-hint: (optional: session number, slug, or partial title)
 ---
 
-The user has returned from a break and wants to reload context. Saved sessions live in `~/.claude/lunch-break/` as markdown files with frontmatter.
+The user has returned from a break and wants to reload context. Saved sessions live in `~/.lunch-break/` as markdown files with frontmatter.
 
 ## If $ARGUMENTS is empty — list mode
 
-1. `ls -1t ~/.claude/lunch-break/*.md 2>/dev/null` to list files newest-first.
+1. `ls -1t ~/.lunch-break/*.md 2>/dev/null` to list files newest-first.
 2. If none exist, say: "No saved sessions yet. Type `/lunch-break` before a break to create one." and stop.
 3. Otherwise, for each file (up to the 15 most recent), read its frontmatter and print a numbered list:
    ```
