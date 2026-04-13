@@ -9,12 +9,16 @@ The user has returned from a break and wants to reload context. Saved sessions l
 
 1. `ls -1t ~/.lunch-break/*.md 2>/dev/null` to list files newest-first.
 2. If none exist, say: "No saved sessions yet. Type `/lunch-break` before a break to create one." and stop.
-3. Otherwise, for each file (up to the 15 most recent), read its frontmatter and print a numbered list:
-   ```
-   1. <title>  —  <relative age, e.g. "2h ago">  [<slug>]
-   2. ...
-   ```
-4. Prompt the user: "Reply with a number or slug to load."
+3. Read frontmatter (title, slug, saved_at) from the 3 most recent files.
+4. Use the **AskUserQuestion** tool so the user can pick with arrow keys. Build one question:
+   - `question`: "Which saved session do you want to resume?"
+   - `header`: "Session"
+   - `multiSelect`: false
+   - `options`: one per recent file, up to 3. Each option:
+     - `label`: the title (truncate to ~60 chars if needed)
+     - `description`: `<relative age> · [<slug>]`
+   - cc automatically appends an "Other" choice — the user can type a number or slug there to pick an older save. Do **not** add your own "Other" option.
+5. When the user picks an option, match it back to the file by slug and proceed to load mode. If they chose "Other" and typed input, treat that input as $ARGUMENTS and re-enter load mode.
 
 ## If $ARGUMENTS is provided — load mode
 
